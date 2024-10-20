@@ -1,0 +1,85 @@
+﻿<Window x:Class="MGNE.Views.GraphSettingsModalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MGNE.Views"
+        mc:Ignorable="d"
+        Title="Настройки отображения"
+        Height="300"
+        Width="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MGNE;component/Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Other specific resources for this UserControl can be added here -->
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*" ></RowDefinition>
+            <RowDefinition Height="0.2*" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel>
+                    <StackPanel>
+                        <Label Content="Элемент 1"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <ComboBox
+                            Name="ComboBoxFirst"
+                             ItemsSource="{Binding Neurons}"
+                            DisplayMemberPath="Visualization.NumberOfNeuron"
+                            SelectedItem="{Binding FirstNeuron, Mode=TwoWay}"
+                            />
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Импульс"/>
+                    </StackPanel>
+                    <StackPanel x:Name="Group1">
+                        <RadioButton GroupName="ImpulseFirst" Content="i" IsChecked="{Binding IsImpulseFirstI, Mode=TwoWay}" />
+                        <RadioButton GroupName="ImpulseFirst" Content="i+1" IsChecked="{Binding IsImpulseFirstIPlus1, Mode=TwoWay}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel>
+                    <StackPanel>
+                        <Label Content="Элемент 2"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <ComboBox
+                             Name="ComboBoxSecond"
+                             ItemsSource="{Binding Neurons}"
+                            DisplayMemberPath="Visualization.NumberOfNeuron"
+                            SelectedItem="{Binding SecondNeuron, Mode=TwoWay}"
+                />
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Импульс"/>
+                    </StackPanel>
+                    <StackPanel x:Name="Group2">
+                        <RadioButton GroupName="ImpulseSecond" Content="i" IsChecked="{Binding IsImpulseSecondI, Mode=TwoWay}" />
+                        <RadioButton GroupName="ImpulseSecond" Content="i+1" IsChecked="{Binding IsImpulseSecondIPlus1, Mode=TwoWay}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Ок" Margin="5"  Style="{DynamicResource ProButtonStyle}" Click="Test_Click"/>
+                <Button Content="?" Margin="5"  Style="{DynamicResource ProButtonStyle}"  Click="Info_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
